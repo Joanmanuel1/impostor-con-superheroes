@@ -1,5 +1,5 @@
 <template>
-  <div class="game-card player-view-card container-fluid animate__animated animate__fadeIn">
+  <div class="game-card player-view-card container-fluid">
 
 
     <!-- Header Section -->
@@ -26,8 +26,10 @@
     <!-- Reveal Area -->
     <div class="row mb-5">
       <div class="col-12 d-flex justify-content-center px-4">
-        <div class="reveal-box-premium flex-column d-flex align-items-center justify-content-center w-100 p-4"
-          :class="[currentPlayer.role, { 'revealed': showWord }]" @click="toggleReveal">
+        <div
+          class="reveal-box-premium flex-column d-flex align-items-center justify-content-center w-100 p-4 animate__animated animate__pulse animate__infinite"
+          :class="[currentPlayer.role, { 'revealed': showWord }]" @click="handleInteraction"
+          style="animation-duration: 2s;">
           <transition name="reveal-transition" mode="out-in">
             <!-- REVEALED STATE -->
             <div v-if="showWord" key="content" class="revealed-ui text-center animate__animated animate__zoomIn">
@@ -66,8 +68,8 @@
                 </div>
                 <ion-icon :icon="fingerPrintOutline" class="fingerprint-icon"></ion-icon>
               </div>
-              <h5 class="fw-900 mb-2">IDENTIFÍCATE</h5>
-              <p class="small opacity-50 px-5">Toca para revelar tus órdenes confidenciales</p>
+              <h5 class="fw-900 mb-2">Toca sobre la huella</h5>
+              <p class="small opacity-50 px-5">Revela tu identidad secreta</p>
             </div>
           </transition>
         </div>
@@ -110,6 +112,14 @@ import { soundManager } from '../utils/SoundManager';
 
 const showWord = ref(false);
 const currentPlayer = computed(() => store.players[store.currentPlayerIndex]);
+
+const handleInteraction = () => {
+  if (showWord.value) {
+    next();
+  } else {
+    toggleReveal();
+  }
+};
 
 const toggleReveal = () => {
   soundManager.play('click');
@@ -232,6 +242,11 @@ const next = () => {
   color: var(--primary);
   opacity: 0.7;
   z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+.reveal-box-premium:active .fingerprint-icon {
+  transform: scale(0.9);
 }
 
 .scan-line {

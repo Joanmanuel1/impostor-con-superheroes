@@ -1,11 +1,16 @@
 <template>
-  <div class="game-card setup-card container-fluid animate__animated animate__fadeIn">
+  <div class="game-card setup-card container-fluid">
     <div class="row text-center mb-2">
       <div class="col-12">
         <div class="logo-wrapper-glow mx-auto mb-3">
           <img src="/superhero.jpg" alt="Logo" class="logo-img">
         </div>
-        <h1 class="gradient-text display-4 mb-2 fw-900">El villano</h1>
+        <div class="d-flex align-items-center justify-content-center gap-3">
+          <h1 class="gradient-text display-4 mb-2 fw-900">El villano</h1>
+          <button class="btn btn-sm btn-outline-light rounded-circle help-btn" @click="showTutorial = true">
+            <ion-icon :icon="helpCircleOutline"></ion-icon>
+          </button>
+        </div>
       </div>
     </div>
 
@@ -72,14 +77,67 @@
       <div class="col-12">
         <div class="section-header d-flex align-items-center mb-4">
           <h5 class="section-title mb-0">Temáticas</h5>
-          <span class="section-count ms-auto">{{ selectedCategories.length }} seleccionada{{ selectedCategories.length
-            !== 1 ? 's' : '' }}</span>
+          <div class="ms-auto d-flex align-items-center gap-2">
+            <span class="small text-white fw-bold">{{ isEditMode ? 'MODO EDICIÓN' : 'MODO JUEGO' }}</span>
+            <div class="form-check form-switch custom-switch">
+              <input class="form-check-input" type="checkbox" role="switch" v-model="isEditMode">
+            </div>
+          </div>
         </div>
-        <div class="category-scroll-container d-flex flex-wrap gap-2">
-          <button v-for="cat in Object.keys(store.categories)" :key="cat" class="btn btn-sm category-chip"
-            :class="{ active: selectedCategories.includes(cat) }" @click="toggleCategory(cat)">
+
+        <!-- Category Chips -->
+        <div class="category-scroll-container d-flex flex-wrap gap-2 mb-3">
+          <!-- All Categories (Merged) -->
+          <button v-for="cat in Object.keys(store.getAllCategories())" :key="cat" class="btn btn-sm category-chip"
+            :class="{
+              'active': selectedCategories.includes(cat) && !isEditMode,
+              'custom': store.customCategories[cat],
+              'editing': isEditMode
+            }" @click="handleCategoryClick(cat)">
             {{ cat }}
+            <ion-icon v-if="isEditMode" :icon="pencilOutline" class="ms-1 edit-indicator"></ion-icon>
+            <ion-icon v-else-if="selectedCategories.includes(cat)" :icon="checkmarkCircle" class="ms-1"></ion-icon>
           </button>
+
+          <!-- Create Button (Always visible) -->
+          <button class="btn btn-sm category-chip add-new" @click="openCreateModal">
+            <ion-icon :icon="addCircleOutline" class="me-1"></ion-icon>
+            Crear
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Custom Category Modal -->
+    <div v-if="showAddModal" class="custom-modal-overlay animate__animated animate__fadeIn">
+      <div class="custom-modal-card">
+        <h4 class="fw-900 mb-3">{{ editingCategoryName ? 'Editar Pack' : 'Crear Pack' }}</h4>
+
+        <input v-model="newCategoryName" type="text" class="form-control mb-3 category-name-input text-white"
+          placeholder="Nombre (Ej: Jugadores de futbol)">
+
+        <div class="words-list mb-3">
+          <div v-for="(item, idx) in newWords" :key="idx" class="d-flex gap-2 mb-2 text-white">
+            <input v-model="item.word" type="text" class="form-control form-control-sm text-white"
+              placeholder="Palabra">
+            <input v-model="item.hint" type="text" class="form-control form-control-sm" placeholder="Pista">
+            <button @click="removeNewWord(idx)" class="btn btn-sm btn-link text-danger p-0">
+              <ion-icon :icon="closeCircleOutline"></ion-icon>
+            </button>
+          </div>
+          <button @click="addNewWordField" class="btn btn-sm btn-link text-primary ps-0 text-decoration-none fw-bold">
+            + Agregar Palabra
+          </button>
+        </div>
+
+        <div class="d-flex gap-2">
+          <button @click="showAddModal = false" class="btn btn-outline-light flex-grow-1">Cancelar</button>
+          <button v-if="editingCategoryName && store.customCategories[editingCategoryName]"
+            @click="confirmRemoveCategory(editingCategoryName)" class="btn btn-outline-danger">
+            <ion-icon :icon="trashOutline"></ion-icon>
+          </button>
+          <button @click="saveCustomCategory" class="btn btn-primary flex-grow-1"
+            :disabled="!isValidCategory">Guardar</button>
         </div>
       </div>
     </div>
@@ -128,30 +186,141 @@
       </button>
     </div>
   </div>
+
+  <!-- Tutorial Overlay -->
+  <Tutorial v-if="showTutorial" @close="showTutorial = false" />
+
 </template>
 
 <script setup>
 import { ref, computed, watch, onMounted } from 'vue';
-import { IonList, IonItem, IonInput, IonButton, IonIcon, IonCheckbox } from '@ionic/vue';
+import { IonIcon } from '@ionic/vue';
 import {
-  shieldCheckmarkOutline,
   closeCircleOutline,
   addCircleOutline,
   rocketOutline,
-  eyeOutline,
-  bulbOutline,
-  checkmarkCircle,
   skullOutline,
-  removeCircleOutline
+  removeCircleOutline,
+  pencilOutline,
+  trashOutline,
+  checkmarkCircle,
+  helpCircleOutline
 } from 'ionicons/icons';
 import { store } from '../store';
 import { soundManager } from '../utils/SoundManager';
+import Tutorial from './Tutorial.vue';
 
 const playerNames = ref(['', '', '']);
 const showCategory = ref(true);
 const impostorHint = ref(true);
 const villainCount = ref(1);
-const selectedCategories = ref(Object.keys(store.categories));
+const showTutorial = ref(false);
+
+const selectedCategories = ref(Object.keys(store.getAllCategories()));
+const isEditMode = ref(false);
+
+// Custom Category Modal State
+const showAddModal = ref(false);
+const editingCategoryName = ref(null);
+const newCategoryName = ref('');
+const newWords = ref([{ word: '', hint: '' }, { word: '', hint: '' }]);
+
+const isValidCategory = computed(() => {
+  return newCategoryName.value.trim().length > 0 &&
+    newWords.value.filter(w => w.word.trim() && w.hint.trim()).length >= 2;
+});
+
+const addNewWordField = () => {
+  newWords.value.push({ word: '', hint: '' });
+};
+
+const removeNewWord = (idx) => {
+  if (newWords.value.length > 2) {
+    newWords.value.splice(idx, 1);
+  }
+};
+
+const handleCategoryClick = (cat) => {
+  if (isEditMode.value) {
+    openEditModal(cat);
+  } else {
+    toggleCategory(cat);
+  }
+};
+
+const openCreateModal = () => {
+  editingCategoryName.value = null;
+  newCategoryName.value = '';
+  newWords.value = [{ word: '', hint: '' }, { word: '', hint: '' }];
+  showAddModal.value = true;
+};
+
+const openEditModal = (name) => {
+  editingCategoryName.value = name;
+  newCategoryName.value = name;
+
+  // Check if it's a custom category or default
+  const allCats = store.getAllCategories();
+  const words = allCats[name];
+
+  if (words) {
+    newWords.value = words.map(w => ({ ...w }));
+  } else {
+    newWords.value = [{ word: '', hint: '' }, { word: '', hint: '' }];
+  }
+  showAddModal.value = true;
+};
+
+const saveCustomCategory = () => {
+  const validWords = newWords.value
+    .filter(w => w.word.trim() && w.hint.trim())
+    .map(w => ({ word: w.word.trim(), hint: w.hint.trim() }));
+
+  if (newCategoryName.value.trim() && validWords.length >= 2) {
+    const newName = newCategoryName.value.trim();
+
+    // If editing and name changed, remove old one first
+    if (editingCategoryName.value && editingCategoryName.value !== newName) {
+      store.removeCustomCategory(editingCategoryName.value);
+      // Update selected categories: remove old name
+      const idx = selectedCategories.value.indexOf(editingCategoryName.value);
+      if (idx > -1) selectedCategories.value.splice(idx, 1);
+    }
+
+    store.addCustomCategory(newName, validWords);
+
+    // Select it automatically if not already
+    if (!selectedCategories.value.includes(newName)) {
+      selectedCategories.value.push(newName);
+    }
+
+    // Reset and close
+    openCreateModal(); // Reset state
+    showAddModal.value = false;
+
+    soundManager.play('click');
+    soundManager.vibrate('success');
+  }
+};
+
+const confirmRemoveCategory = (name) => {
+  if (confirm(`¿Eliminar el pack "${name}"?`)) {
+    store.removeCustomCategory(name);
+
+    // If it was a default category shadowed, it will revert to default automatically
+    // If it was purely custom, it's gone.
+
+    // Update selection if needed (remove if not in merged list anymore)
+    const allCats = store.getAllCategories();
+    if (!allCats[name]) {
+      const idx = selectedCategories.value.indexOf(name);
+      if (idx > -1) selectedCategories.value.splice(idx, 1);
+    }
+
+    soundManager.vibrate('medium');
+    showAddModal.value = false; // Close modal if open
+  }
+};
 
 // Load saved names on mount
 onMounted(() => {
@@ -165,6 +334,13 @@ onMounted(() => {
     } catch (e) {
       console.error('Error loading saved names', e);
     }
+  }
+
+  // Check Tutorial
+  if (!localStorage.getItem('tutorial_seen')) {
+    setTimeout(() => {
+      showTutorial.value = true;
+    }, 500);
   }
 });
 
@@ -391,6 +567,7 @@ const start = () => {
   border-radius: 12px;
   font-weight: 800;
   transition: all 0.3s ease;
+  color: white;
 }
 
 .category-chip.active {
@@ -543,6 +720,120 @@ const start = () => {
 
 .list-leave-to {
   opacity: 0;
-  transform: translateX(20px);
+}
+
+
+.category-chip.custom {
+  background: rgba(168, 85, 247, 0.15);
+  border-color: rgba(168, 85, 247, 0.3);
+}
+
+.category-chip.custom.active {
+  background: var(--secondary);
+  border-color: var(--secondary);
+}
+
+.category-chip.add-new {
+  border-style: dashed;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-muted);
+}
+
+.category-chip.add-new:active {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.remove-cat-icon {
+  opacity: 0.6;
+  font-size: 1.1rem;
+}
+
+.remove-cat-icon:active {
+  opacity: 1;
+  color: var(--danger);
+}
+
+.custom-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.custom-modal-card {
+  background: #1e293b;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 400px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.category-name-input {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: white !important;
+  font-weight: 700;
+  border-radius: 0.8rem;
+}
+
+.words-list {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.form-control-sm {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: none !important;
+  color: white !important;
+}
+
+.category-name-input::placeholder,
+.form-control-sm::placeholder {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* Edit Mode Styles */
+.custom-switch .form-check-input {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  cursor: pointer;
+}
+
+.custom-switch .form-check-input:checked {
+  background-color: var(--warning);
+  border-color: var(--warning);
+}
+
+.category-chip.editing {
+  background: rgba(245, 158, 11, 0.15) !important;
+  border-color: var(--warning) !important;
+  border-style: dashed !important;
+  color: white !important;
+}
+
+.edit-indicator {
+  color: var(--warning);
+  font-size: 0.9em;
+}
+
+.help-btn {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.7);
 }
 </style>

@@ -2,13 +2,8 @@
   <div class="game-card voting-card container-fluid">
     <div class="row text-center mb-4">
       <div class="col-12">
-        <div class="header-icon-glow mx-auto mb-3">
-          <div class="icon-inner">
-            <ion-icon :icon="checkboxOutline"></ion-icon>
-          </div>
-        </div>
-        <h1 class="gradient-text h2 mb-1">Fase de Votación</h1>
-        <p class="text-secondary small fw-bold text-uppercase letter-spacing-sm mb-3">Ronda {{ store.currentRound }}</p>
+        <h1 class="gradient-text mb-1">Votación</h1>
+        <p class="text-secondary small fw-bold text-uppercase letter-spacing-sm">Ronda {{ store.currentRound }}</p>
 
         <div v-if="store.eliminatedPlayers.length > 0" class="eliminated-pill mt-2">
           <ion-icon :icon="skullOutline" class="me-1"></ion-icon>

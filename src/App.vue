@@ -2,13 +2,11 @@
   <ion-app>
     <ion-content class="ion-padding">
       <div class="app-wrapper">
-        <transition name="fade" mode="out-in">
-          <Setup v-if="store.gameState === 'setup'" />
-          <PlayerView v-else-if="store.gameState === 'show-word'" />
-          <Voting v-else-if="store.gameState === 'voting'" />
-          <EliminationReveal v-else-if="store.gameState === 'elimination-reveal'" />
-          <Result v-else-if="store.gameState === 'results'" />
-        </transition>
+        <Setup v-if="store.gameState === 'setup'" />
+        <PlayerView v-else-if="store.gameState === 'show-word'" />
+        <Voting v-else-if="store.gameState === 'voting'" />
+        <EliminationReveal v-else-if="store.gameState === 'elimination-reveal'" />
+        <Result v-else-if="store.gameState === 'results'" />
       </div>
     </ion-content>
   </ion-app>

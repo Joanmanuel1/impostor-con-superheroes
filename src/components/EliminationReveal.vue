@@ -1,5 +1,5 @@
 <template>
-    <div class="game-card elimination-card container-fluid text-center animate__animated animate__fadeIn">
+    <div class="game-card elimination-card container-fluid text-center">
         <div class="row pt-4 mb-5">
             <div class="col-12">
                 <div class="elimination-icon-wrapper mx-auto mb-4" :class="store.lastEliminatedPlayer?.role">
@@ -30,7 +30,7 @@
                 <div v-if="remainingVillains > 0" class="alert-box mb-4">
                     <ion-icon :icon="alertCircleOutline" class="me-2"></ion-icon>
                     <span>Aún quedan <strong>{{ remainingVillains }}</strong> villano{{ remainingVillains > 1 ? 's' : ''
-                    }} oculto{{ remainingVillains > 1 ? 's' : '' }}</span>
+                        }} oculto{{ remainingVillains > 1 ? 's' : '' }}</span>
                 </div>
 
                 <div class="stats-row row g-3 mb-4">

@@ -39,7 +39,11 @@ export const store = reactive({
 
   ],
 
+  customCategories: {},
+
   categories: {
+    // Default categories will be merged with custom ones dynamically
+
 
     Comidas: [
       { word: 'Pizza', hint: 'Horno' },
@@ -525,12 +529,28 @@ export const store = reactive({
     if (options.enabledCategories) store.config.enabledCategories = options.enabledCategories;
     if (options.villainCount) store.config.villainCount = options.villainCount;
 
-    const availableCategories = store.config.enabledCategories.length > 0
-      ? store.config.enabledCategories
-      : Object.keys(store.categories);
+    const allCats = store.getAllCategories();
 
-    store.selectedCategory = availableCategories[Math.floor(Math.random() * availableCategories.length)];
-    const words = store.categories[store.selectedCategory];
+    // Filter out any categories that don't actually exist in allCats
+    const validCategories = (store.config.enabledCategories.length > 0
+      ? store.config.enabledCategories
+      : Object.keys(allCats)).filter(cat => allCats[cat] && allCats[cat].length > 0);
+
+    // Fallback if no valid categories found
+    if (validCategories.length === 0) {
+      console.error('No valid categories available!');
+      // Fallback to default Comidas
+      store.selectedCategory = 'Comidas';
+    } else {
+      store.selectedCategory = validCategories[Math.floor(Math.random() * validCategories.length)];
+    }
+
+    const words = allCats[store.selectedCategory];
+
+    if (!words || words.length === 0) {
+      console.error('Selected category has no words', store.selectedCategory);
+      return;
+    }
 
     const wordIndex = Math.floor(Math.random() * words.length);
     store.selectedWord = words[wordIndex].word;
@@ -680,5 +700,33 @@ export const store = reactive({
     store.eliminatedPlayers = [];
     store.currentRound = 1;
     store.lastEliminatedPlayer = null;
+  },
+
+  loadCustomCategories() {
+    const saved = localStorage.getItem('impostor_custom_categories');
+    if (saved) {
+      try {
+        store.customCategories = JSON.parse(saved);
+      } catch (e) {
+        console.error('Failed to load custom categories', e);
+      }
+    }
+  },
+
+  addCustomCategory(name, words) {
+    store.customCategories[name] = words;
+    localStorage.setItem('impostor_custom_categories', JSON.stringify(store.customCategories));
+  },
+
+  removeCustomCategory(name) {
+    delete store.customCategories[name];
+    localStorage.setItem('impostor_custom_categories', JSON.stringify(store.customCategories));
+  },
+
+  getAllCategories() {
+    return { ...store.categories, ...store.customCategories };
   }
 });
+
+// Initialize custom categories
+store.loadCustomCategories();
