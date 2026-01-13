@@ -1,7 +1,7 @@
 import { reactive, computed } from 'vue';
 
 export const store = reactive({
-  gameState: 'setup', // setup, show-word, voting, results
+  gameState: 'welcome', // welcome, setup, show-word, voting, results
   players: [],
   currentPlayerIndex: 0,
   selectedCategory: '',

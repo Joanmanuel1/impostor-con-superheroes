@@ -2,7 +2,8 @@
   <ion-app>
     <ion-content class="ion-padding">
       <div class="app-wrapper">
-        <Setup v-if="store.gameState === 'setup'" />
+        <WelcomeView v-if="store.gameState === 'welcome'" />
+        <Setup v-else-if="store.gameState === 'setup'" />
         <PlayerView v-else-if="store.gameState === 'show-word'" />
         <Voting v-else-if="store.gameState === 'voting'" />
         <EliminationReveal v-else-if="store.gameState === 'elimination-reveal'" />
@@ -15,6 +16,7 @@
 <script setup>
 import { IonApp, IonContent } from '@ionic/vue';
 import { store } from './store';
+import WelcomeView from './components/WelcomeView.vue';
 import Setup from './components/Setup.vue';
 import PlayerView from './components/PlayerView.vue';
 import Voting from './components/Voting.vue';

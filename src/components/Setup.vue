@@ -2,15 +2,12 @@
   <div class="game-card setup-card container-fluid">
     <div class="row text-center mb-2">
       <div class="col-12">
-        <div class="logo-wrapper-glow mx-auto mb-3">
-          <img src="/superhero.jpg" alt="Logo" class="logo-img">
-        </div>
         <div class="d-flex align-items-center justify-content-center gap-3">
           <h1 class="gradient-text display-4 mb-2 fw-900">El villano</h1>
-          <button class="btn btn-sm btn-outline-light rounded-circle help-btn" @click="showTutorial = true">
-            <ion-icon :icon="helpCircleOutline"></ion-icon>
-          </button>
         </div>
+        <button class="btn btn-sm btn-primary" @click="showTutorial = true">
+          <span>Tutorial</span>
+        </button>
       </div>
     </div>
 
@@ -142,6 +139,27 @@
       </div>
     </div>
 
+    <!-- Confirmation Modal -->
+    <div v-if="showConfirmDelete" class="custom-modal-overlay animate__animated animate__fadeIn">
+      <div class="custom-modal-card confirm-modal text-center animate__animated animate__zoomIn">
+        <div class="confirm-icon-wrapper mb-3">
+          <ion-icon :icon="trashOutline"></ion-icon>
+        </div>
+        <h4 class="fw-900 mb-2">¿Eliminar Pack?</h4>
+        <p class="text-white-50 mb-4">¿Estás seguro de que quieres eliminar "{{ categoryToDelete }}"? Esta acción no se
+          puede deshacer.</p>
+
+        <div class="d-flex gap-2 w-100">
+          <button @click="showConfirmDelete = false" class="btn btn-outline-light flex-grow-1 py-2">
+            Cancelar
+          </button>
+          <button @click="executeDelete" class="btn btn-danger flex-grow-1 py-2 shadow-danger-btn">
+            Eliminar
+          </button>
+        </div>
+      </div>
+    </div>
+
     <!-- Step 3: Players -->
     <div class="row mb-5">
       <div class="col-12">
@@ -230,6 +248,9 @@ const isValidCategory = computed(() => {
     newWords.value.filter(w => w.word.trim() && w.hint.trim()).length >= 2;
 });
 
+const showConfirmDelete = ref(false);
+const categoryToDelete = ref(null);
+
 const addNewWordField = () => {
   newWords.value.push({ word: '', hint: '' });
 };
@@ -304,22 +325,27 @@ const saveCustomCategory = () => {
 };
 
 const confirmRemoveCategory = (name) => {
-  if (confirm(`¿Eliminar el pack "${name}"?`)) {
-    store.removeCustomCategory(name);
+  categoryToDelete.value = name;
+  showConfirmDelete.value = true;
+};
 
-    // If it was a default category shadowed, it will revert to default automatically
-    // If it was purely custom, it's gone.
+const executeDelete = () => {
+  const name = categoryToDelete.value;
+  if (!name) return;
 
-    // Update selection if needed (remove if not in merged list anymore)
-    const allCats = store.getAllCategories();
-    if (!allCats[name]) {
-      const idx = selectedCategories.value.indexOf(name);
-      if (idx > -1) selectedCategories.value.splice(idx, 1);
-    }
+  store.removeCustomCategory(name);
 
-    soundManager.vibrate('medium');
-    showAddModal.value = false; // Close modal if open
+  // Update selection if needed
+  const allCats = store.getAllCategories();
+  if (!allCats[name]) {
+    const idx = selectedCategories.value.indexOf(name);
+    if (idx > -1) selectedCategories.value.splice(idx, 1);
   }
+
+  soundManager.vibrate('medium');
+  showConfirmDelete.value = false;
+  showAddModal.value = false;
+  categoryToDelete.value = null;
 };
 
 // Load saved names on mount
@@ -798,6 +824,31 @@ const start = () => {
 }
 
 .category-name-input::placeholder,
+.form-control-sm::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.confirm-modal {
+  max-width: 320px;
+}
+
+.confirm-icon-wrapper {
+  width: 60px;
+  height: 60px;
+  background: rgba(244, 63, 94, 0.1);
+  color: var(--danger);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin: 0 auto;
+}
+
+.shadow-danger-btn {
+  box-shadow: 0 10px 20px -5px rgba(244, 63, 94, 0.4);
+}
+
 .form-control-sm::placeholder {
   color: rgba(255, 255, 255, 0.6) !important;
 }
