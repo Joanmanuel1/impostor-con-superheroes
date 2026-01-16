@@ -1,5 +1,5 @@
 <template>
-  <div class="game-card setup-card container-fluid">
+  <div class="game-card setup-card container-fluid px-3">
     <div class="row text-center mb-2">
       <div class="col-12">
         <div class="d-flex align-items-center justify-content-center gap-3">
@@ -462,7 +462,7 @@ const start = () => {
   width: 28px;
   height: 28px;
   background: var(--primary);
-  color: white;
+  color: var(--bg-dark);
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -472,12 +472,12 @@ const start = () => {
 }
 
 .section-title {
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 900;
   text-transform: uppercase;
   color: var(--text-light);
-  letter-spacing: 0.1em;
-  opacity: 0.9;
+  letter-spacing: 0.15em;
+  opacity: 0.95;
 }
 
 .section-count {
@@ -493,8 +493,8 @@ const start = () => {
 .option-card-premium {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 1.5rem;
-  padding: 1rem;
+  border-radius: 1.2rem;
+  padding: 1.25rem 0.75rem;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   display: flex;
@@ -502,9 +502,9 @@ const start = () => {
 }
 
 .option-card-premium.active {
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(168, 85, 247, 0.05));
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(251, 191, 36, 0.1));
   border-color: var(--primary);
-  box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.2);
+  box-shadow: 0 10px 30px -10px var(--primary-glow);
 }
 
 .option-icon {
@@ -541,7 +541,7 @@ const start = () => {
 .villain-control-card {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 1.8rem;
+  border-radius: 1.5rem;
   padding: 1.5rem;
 }
 
@@ -584,23 +584,26 @@ const start = () => {
 }
 
 .shadow-danger {
-  box-shadow: 0 0 15px rgba(244, 63, 94, 0.4);
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
 }
 
 .category-chip {
   background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  font-weight: 800;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  font-weight: 700;
+  padding: 0.6rem 1.2rem;
   transition: all 0.3s ease;
-  color: white;
+  color: var(--text-light);
 }
 
 .category-chip.active {
-  background: var(--primary);
-  color: white;
-  border-color: var(--primary);
+  background: linear-gradient(135deg, var(--primary), #0891b2);
+  color: var(--bg-dark);
+  font-weight: 800;
+  border-color: transparent;
   transform: translateY(-2px);
+  box-shadow: 0 8px 20px -8px var(--primary-glow);
 }
 
 .players-list-modern {
@@ -618,6 +621,7 @@ const start = () => {
   border-radius: 1.2rem;
   transition: border-color 0.3s;
   gap: 0.75rem;
+  width: 100%;
 }
 
 .player-row:focus-within {
@@ -712,19 +716,23 @@ const start = () => {
 
 .btn-start-game {
   background: linear-gradient(135deg, var(--primary), var(--secondary));
-  color: white;
+  color: var(--bg-dark);
   border: none;
-  border-radius: 1.2rem;
-  box-shadow: 0 15px 35px -10px var(--primary-glow);
-  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  font-size: 1.2rem;
+  letter-spacing: 0.05em;
+  border-radius: 1.4rem;
+  box-shadow: 0 15px 40px -10px var(--primary-glow);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .btn-start-game:active {
-  transform: scale(0.96);
+  transform: scale(0.97);
+  box-shadow: 0 5px 15px -5px var(--primary-glow);
 }
 
 .btn-start-game:disabled {
   background: #1e293b;
+  color: var(--text-muted);
   opacity: 0.6;
   box-shadow: none;
 }
@@ -750,13 +758,15 @@ const start = () => {
 
 
 .category-chip.custom {
-  background: rgba(168, 85, 247, 0.15);
-  border-color: rgba(168, 85, 247, 0.3);
+  background: rgba(251, 191, 36, 0.1);
+  border-color: rgba(251, 191, 36, 0.3);
 }
 
 .category-chip.custom.active {
-  background: var(--secondary);
-  border-color: var(--secondary);
+  background: linear-gradient(135deg, var(--secondary), #d97706);
+  color: var(--bg-dark);
+  border-color: transparent;
+  box-shadow: 0 8px 20px -8px var(--secondary-glow);
 }
 
 .category-chip.add-new {

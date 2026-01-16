@@ -1,5 +1,5 @@
 <template>
-  <div class="game-card player-view-card container-fluid">
+  <div class="game-card player-view-card container-fluid px-3">
 
 
     <!-- Header Section -->
@@ -7,7 +7,7 @@
       <div class="col-12">
         <div class="player-avatar-wrapper mx-auto mb-3">
           <div class="avatar-ring"></div>
-          <div class="avatar-core" :style="{ backgroundColor: currentPlayer.avatar?.color || '#6366f1' }">
+          <div class="avatar-core" :style="{ backgroundColor: currentPlayer.avatar?.color || 'var(--primary)' }">
             <img v-if="currentPlayer.avatar?.path" :src="currentPlayer.avatar.path" alt="Avatar"
               class="avatar-character-img">
             <span v-else class="avatar-initial-large">{{ currentPlayer.name.charAt(0).toUpperCase() }}</span>
@@ -25,7 +25,7 @@
     </div>
     <!-- Reveal Area -->
     <div class="row mb-5">
-      <div class="col-12 d-flex justify-content-center px-4">
+      <div class="col-12 d-flex justify-content-center px-2">
         <div
           class="reveal-box-premium flex-column d-flex align-items-center justify-content-center w-100 p-4 animate__animated animate__pulse animate__infinite"
           :class="[currentPlayer.role, { 'revealed': showWord }]" @click="handleInteraction"
@@ -77,7 +77,7 @@
     </div>
 
     <!-- Action Button -->
-    <div class="footer-action px-3">
+    <div class="footer-action px-2">
       <button @click="showWord ? next() : toggleReveal()" class="btn btn-reveal-action w-100 py-3 shadow-lg"
         :class="{ 'btn-primary-gradient': showWord, 'btn-outline-success': !showWord }">
         <template v-if="showWord">
@@ -147,14 +147,13 @@ const next = () => {
 }
 
 .status-glass {
-  background: rgba(37, 56, 101, 0.6);
+  background: rgba(8, 51, 68, 0.4);
   backdrop-filter: blur(12px);
   padding: 10px 24px;
-  border-radius: 0 0 20px 20px;
+  border-radius: 1.2rem;
   border: 1px solid rgba(255, 255, 255, 0.05);
-  border-top: none;
-  font-size: 0.85rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  font-size: 0.9rem;
+  box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.5);
 }
 
 .player-avatar-wrapper {
@@ -206,25 +205,26 @@ const next = () => {
 }
 
 .reveal-box-premium {
-  background: rgba(15, 23, 42, 0.4);
+  background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 3rem;
+  border-radius: 2rem;
   cursor: pointer;
   position: relative;
   overflow: hidden;
   transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  width: 100%;
 }
 
 .reveal-box-premium.revealed.superhero {
   border-color: var(--success);
   background: radial-gradient(circle at center, rgba(16, 185, 129, 0.1), transparent);
-  box-shadow: inset 0 0 60px rgba(16, 185, 129, 0.1);
+  box-shadow: inset 0 0 80px rgba(16, 185, 129, 0.1), 0 0 40px -10px rgba(16, 185, 129, 0.2);
 }
 
 .reveal-box-premium.revealed.villain {
   border-color: var(--danger);
-  background: radial-gradient(circle at center, rgba(244, 63, 94, 0.1), transparent);
-  box-shadow: inset 0 0 60px rgba(244, 63, 94, 0.1);
+  background: radial-gradient(circle at center, rgba(239, 68, 68, 0.1), transparent);
+  box-shadow: inset 0 0 80px rgba(239, 68, 68, 0.1), 0 0 40px -10px rgba(239, 68, 68, 0.2);
 }
 
 .biometric-area {
@@ -290,12 +290,14 @@ const next = () => {
 
 .role-badge.superhero {
   background: var(--success);
+  color: var(--bg-dark);
   box-shadow: 0 0 30px rgba(16, 185, 129, 0.4);
 }
 
 .role-badge.villain {
   background: var(--danger);
-  box-shadow: 0 0 30px rgba(244, 63, 94, 0.4);
+  color: var(--bg-dark);
+  box-shadow: 0 0 30px rgba(239, 68, 68, 0.4);
 }
 
 .word-card-glamour {
@@ -321,7 +323,7 @@ const next = () => {
 
 .btn-primary-gradient {
   background: linear-gradient(135deg, var(--primary), var(--secondary));
-  color: white;
+  color: var(--bg-dark);
   box-shadow: 0 15px 35px -10px var(--primary-glow);
 }
 

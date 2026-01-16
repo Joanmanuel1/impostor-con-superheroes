@@ -27,7 +27,7 @@ const startSetup = () => {
 .welcome-screen {
     position: fixed;
     inset: 0;
-    background: #000;
+    background: var(--bg-dark);
     z-index: 9999;
     cursor: pointer;
 }
@@ -45,7 +45,7 @@ const startSetup = () => {
 .splash-img {
     width: 100%;
     height: 100%;
-    object-fit: fill;
+    object-fit: cover;
 }
 
 .tap-overlay {
@@ -59,15 +59,16 @@ const startSetup = () => {
 }
 
 .tap-hint {
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 900;
-    color: white;
-    text-shadow: 0 0 20px rgba(99, 102, 241, 0.8), 0 0 40px rgba(0, 0, 0, 0.5);
-    letter-spacing: 0.2em;
-    background: rgba(0, 0, 0, 0.3);
-    padding: 0.75rem 2rem;
+    color: var(--text-light);
+    text-shadow: 0 0 20px var(--primary-glow), 0 0 40px rgba(0, 0, 0, 0.5);
+    letter-spacing: 0.25em;
+    background: rgba(15, 23, 42, 0.6);
+    padding: 1rem 2.5rem;
     border-radius: 100px;
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px -10px var(--primary-glow);
 }
 </style>

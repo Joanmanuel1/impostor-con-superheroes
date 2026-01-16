@@ -1,6 +1,6 @@
 <template>
   <ion-app>
-    <ion-content class="ion-padding">
+    <ion-content>
       <div class="app-wrapper">
         <WelcomeView v-if="store.gameState === 'welcome'" />
         <Setup v-else-if="store.gameState === 'setup'" />
@@ -29,19 +29,35 @@ import Result from './components/Result.vue';
 
 :root {
   --app-font: 'Outfit', sans-serif;
-  --primary: #6366f1;
-  --primary-rgb: 99, 102, 241;
-  --primary-glow: rgba(99, 102, 241, 0.4);
-  --secondary: #a855f7;
-  --bg-dark: #070912;
+
+  /* Modern Cyan/Teal & Amber/Gold Palette */
+  --primary: #06b6d4;
+  /* Cyan 500 */
+  --primary-rgb: 6, 182, 212;
+  --primary-glow: rgba(6, 182, 212, 0.4);
+  --secondary: #fbbf24;
+  /* Amber 400 */
+  --secondary-glow: rgba(251, 191, 36, 0.4);
+
+  --bg-dark: #020617;
+  /* Slate 950 */
   --bg-surface: #0f172a;
-  --card-bg: rgba(15, 23, 42, 0.7);
-  --card-border: rgba(255, 255, 255, 0.08);
+  /* Slate 900 */
+  --card-bg: rgba(15, 23, 42, 0.6);
+  --card-border: rgba(255, 255, 255, 0.05);
+
   --text-light: #f8fafc;
   --text-muted: #94a3b8;
-  --danger: #f43f5e;
+  --danger: #ef4444;
   --success: #10b981;
   --warning: #f59e0b;
+
+  /* Fluid Design System - Balanced Mobile First */
+  --container-padding: 12px;
+  --border-radius-lg: clamp(1rem, 2vw, 1.5rem);
+  --font-size-base: clamp(0.9rem, 1vw + 0.5rem, 1.1rem);
+  --h1-size: clamp(2rem, 8vw, 3.5rem);
+  --h2-size: clamp(1.5rem, 6vw, 2.5rem);
 }
 
 body {
@@ -53,36 +69,60 @@ body {
 }
 
 ion-content {
-  --background: radial-gradient(circle at 50% -20%, #312e81 0%, var(--bg-dark) 85%);
+  --background: radial-gradient(circle at 50% 0%, #083344 0%, var(--bg-dark) 100%);
   --color: var(--text-light);
+
 }
 
 .app-wrapper {
-  max-width: 500px;
+  max-width: 100%;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  min-height: 100%;
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 .game-card {
   background: var(--card-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-radius: 2.5rem;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-radius: var(--border-radius-lg);
   border: 1px solid var(--card-border);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
-  padding: 2rem 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  padding: 1.5rem 0.75rem;
+  width: 100%;
 }
 
-h1,
-h2,
-h3 {
+@media (min-width: 576px) {
+  .game-card {
+    border-radius: var(--border-radius-lg);
+    border: 1px solid var(--card-border);
+    padding: 2.5rem;
+    max-width: 500px;
+    margin: 2rem auto;
+  }
+}
+
+h1 {
+  font-size: var(--h1-size);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+}
+
+h2 {
+  font-size: var(--h2-size);
   font-weight: 800;
   letter-spacing: -0.02em;
 }
 
+h3 {
+  font-weight: 700;
+}
+
 .gradient-text {
-  background: linear-gradient(135deg, #818cf8 0%, #c084fc 100%);
+  background: linear-gradient(135deg, var(--primary) 0%, #38bdf8 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
