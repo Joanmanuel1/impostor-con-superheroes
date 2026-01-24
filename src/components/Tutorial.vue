@@ -2,33 +2,35 @@
     <div class="tutorial-overlay animate__animated animate__fadeIn">
         <div class="tutorial-card">
             <div class="tutorial-content text-center">
-                <!-- Icon/Image -->
-                <div class="icon-wrapper mb-4 animate__animated animate__bounceIn delay-1s" :key="currentSlide">
-                    <ion-icon :icon="slides[currentSlide].icon" class="slide-icon"
-                        :style="{ color: slides[currentSlide].color }"></ion-icon>
+                <div class="tutorial-scroll-area">
+                    <!-- Icon/Image -->
+                    <div class="icon-wrapper mb-3 animate__animated animate__bounceIn delay-1s" :key="currentSlide">
+                        <ion-icon :icon="slides[currentSlide].icon" class="slide-icon"
+                            :style="{ color: slides[currentSlide].color }"></ion-icon>
+                    </div>
+
+                    <!-- Text -->
+                    <h2 class="h4 fw-900 mb-2 gradient-text">{{ slides[currentSlide].title }}</h2>
+                    <p class="tutorial-description mb-4 px-2">{{ slides[currentSlide].description }}</p>
                 </div>
 
-                <!-- Text -->
-                <h2 class="fw-900 mb-4 gradient-text">{{ slides[currentSlide].title }}</h2>
-                <p class="tutorial-description mb-5 px-3">{{ slides[currentSlide].description }}</p>
-
                 <!-- Indicators -->
-                <div class="indicators mb-4 d-flex justify-content-center gap-2">
+                <div class="indicators mb-3 d-flex justify-content-center gap-2">
                     <div v-for="(_, idx) in slides" :key="idx" class="indicator-dot"
                         :class="{ active: idx === currentSlide }"></div>
                 </div>
 
                 <!-- Controls -->
                 <button v-if="currentSlide < slides.length - 1" @click="nextSlide"
-                    class="btn btn-primary w-100 py-3 mb-3 fw-bold shadow-lg">
+                    class="btn btn-primary w-100 py-2 mb-2 fw-bold shadow-lg">
                     SIGUIENTE
                 </button>
-                <button v-else @click="finishTutorial" class="btn btn-success w-100 py-3 mb-3 fw-bold shadow-lg">
+                <button v-else @click="finishTutorial" class="btn btn-success w-100 py-2 mb-2 fw-bold shadow-lg">
                     ¡ENTENDIDO!
                 </button>
 
                 <button @click="finishTutorial"
-                    class="btn btn-link text-white-50 text-decoration-none btn-sm fw-bold tracking-wider">
+                    class="btn btn-link text-white-50 text-decoration-none btn-sm fw-bold tracking-wider py-1">
                     OMITIR
                 </button>
             </div>
@@ -45,7 +47,6 @@ import {
     chatbubblesOutline,
     skullOutline
 } from 'ionicons/icons';
-import { soundManager } from '../utils/SoundManager';
 
 const emit = defineEmits(['close']);
 
@@ -53,40 +54,36 @@ const currentSlide = ref(0);
 
 const slides = [
     {
-        title: 'Objetivo: Encontrar al villano',
-        description: 'Todos los superhéroes conocen la palabra secreta, excepto el villano, el cual solo tiene una pista, la cual es una palabra que lo aproxima a desucbrir la palabra secreta.',
+        title: 'Objetivo',
+        description: 'Debes encontrar al villano. Todos los héroes conocen la palabra secreta. El villano solo tiene una pista para intentar deducirla.',
         icon: peopleOutline,
-        color: '#6366f1' // Primary
+        color: '#6366f1'
     },
     {
-        title: 'Roles: Superhéroes vs Villano',
-        description: 'Los superhéroes deben encontrar al villano. El cual debe pasar desapercibido y adivinar la palabra.',
+        title: 'Roles',
+        description: 'Héroes vs Villano. Los héroes deben desenmascarar al villano antes de que este logre adivinar la palabra secreta.',
         icon: eyeOffOutline,
-        color: '#f43f5e' // Danger
+        color: '#f43f5e'
     },
     {
         title: 'Dinámica',
-        description: 'Cada participante debe decir una palabra o una frase relacionada a la palabra secreta en su turno. ¡No seas muy obvio para que el villano no adivine la palabra secreta! ¡Tampoco seas muy rebuscado para que los superheroes puedan deducir que vos no sos el villano.',
+        description: 'Di una palabra relacionada en tu turno. ¡Sé sutil! No seas obvio para no ayudar al villano, ni tan complejo para parecer sospechoso.',
         icon: chatbubblesOutline,
-        color: '#eab308' // Warning
+        color: '#eab308'
     },
     {
         title: 'Votación',
-        description: 'Al final de cada ronda pueden ser 1, 2 o las rondas que los participantes decidan, votan para eliminar a alguien. Si el villano es descubierto pierde y ganan los superheroes. En cambio si el villano ganara si logra llegar hasta la ultima ronda sin ser descubierto. Nadie debe revelar la palabra secreta hasta que queden la misma cantidad de superhéroes que de villanos.',
+        description: 'Voten para expulsar al sospechoso. El villano gana si llega al final o adivina la palabra. Si es descubierto antes, ganan los héroes.',
         icon: skullOutline,
-        color: '#10b981' // Success
+        color: '#10b981'
     }
 ];
 
 const nextSlide = () => {
-    soundManager.play('click');
-    soundManager.vibrate('light');
     currentSlide.value++;
 };
 
 const finishTutorial = () => {
-    soundManager.play('click');
-    soundManager.vibrate('medium');
     localStorage.setItem('tutorial_seen', 'true');
     emit('close');
 };
@@ -108,22 +105,35 @@ const finishTutorial = () => {
 .tutorial-card {
     background: #1e293b;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 2rem;
-    padding: 2.5rem 2rem;
+    border-radius: 1.5rem;
+    padding: 1.5rem 1.25rem;
     width: 100%;
-    max-width: 400px;
+    max-width: 360px;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+}
+
+.tutorial-scroll-area {
+    max-height: 50vh;
+    overflow-y: auto;
+    margin-bottom: 1rem;
+    scrollbar-width: none;
+}
+
+.tutorial-scroll-area::-webkit-scrollbar {
+    display: none;
 }
 
 .slide-icon {
-    font-size: 5rem;
-    filter: drop-shadow(0 0 20px currentColor);
+    font-size: 3.5rem;
+    filter: drop-shadow(0 0 15px currentColor);
 }
 
 .tutorial-description {
     color: rgba(255, 255, 255, 0.8);
-    font-size: 1.1rem;
-    line-height: 1.7;
+    font-size: 0.95rem;
+    line-height: 1.5;
     font-weight: 500;
 }
 

@@ -13,7 +13,7 @@
             <span v-else class="avatar-initial-large">{{ currentPlayer.name.charAt(0).toUpperCase() }}</span>
           </div>
         </div>
-        <h2 class="display-6 fw-900 mb-1 text-gradient-silver">{{ currentPlayer.name }}</h2>
+        <h2 class="h4 fw-900 mb-1 text-gradient-silver">{{ currentPlayer.name }}</h2>
         <p class="small letter-spacing-sm">OPERACIÓN EN CURSO</p>
       </div>
     </div>
@@ -40,11 +40,11 @@
 
               <div class="word-card-glamour">
                 <template v-if="currentPlayer.role === 'superhero'">
-                  <h1 class="display-1 fw-900 gradient-text mb-0">{{ currentPlayer.word }}</h1>
+                  <h1 class="display-4 fw-900 gradient-text mb-0">{{ currentPlayer.word }}</h1>
                 </template>
                 <template v-else-if="currentPlayer.role === 'villain'">
                   <div v-if="store.config.impostorHint">
-                    <h1 class="display-2 fw-900 villain-text-glow mb-0">{{ store.hint }}</h1>
+                    <h1 class="display-5 fw-900 villain-text-glow mb-0">{{ store.hint }}</h1>
                     <p class="text-danger-premium small fw-900 mt-3 mb-0">USA ESTA PISTA PARA CAMUFLARTE </p>
                     <p class="text-danger-premium small fw-900 mt-3 mb-0">Recuerda que es solo para darte una
                       aproximación
@@ -108,7 +108,6 @@ import {
   shieldOutline
 } from 'ionicons/icons';
 import { store } from '../store';
-import { soundManager } from '../utils/SoundManager';
 
 const showWord = ref(false);
 const currentPlayer = computed(() => store.players[store.currentPlayerIndex]);
@@ -122,18 +121,10 @@ const handleInteraction = () => {
 };
 
 const toggleReveal = () => {
-  soundManager.play('click');
-  soundManager.vibrate('light');
   showWord.value = !showWord.value;
-  if (showWord.value) {
-    soundManager.play('reveal');
-    soundManager.vibrate('heavy');
-  }
 };
 
 const next = () => {
-  soundManager.play('click');
-  soundManager.vibrate('light');
   showWord.value = false;
   store.nextPlayer();
 };
@@ -157,8 +148,8 @@ const next = () => {
 }
 
 .player-avatar-wrapper {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   position: relative;
   display: flex;
   align-items: center;
@@ -175,8 +166,8 @@ const next = () => {
 }
 
 .avatar-core {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -229,8 +220,8 @@ const next = () => {
 
 .biometric-area {
   position: relative;
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -238,7 +229,7 @@ const next = () => {
 }
 
 .fingerprint-icon {
-  font-size: 6rem;
+  font-size: 5rem;
   color: var(--primary);
   opacity: 0.7;
   z-index: 2;
@@ -280,7 +271,7 @@ const next = () => {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 24px;
+  padding: 8px 18px;
   border-radius: 100px;
   font-weight: 900;
   font-size: 0.9rem;
@@ -315,8 +306,9 @@ const next = () => {
 }
 
 .btn-reveal-action {
-  border-radius: 1rem;
+  border-radius: 0.85rem;
   font-weight: 900;
+  font-size: 0.9rem;
   letter-spacing: 0.1em;
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }

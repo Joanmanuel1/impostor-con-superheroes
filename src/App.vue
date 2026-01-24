@@ -54,10 +54,10 @@ import Result from './components/Result.vue';
 
   /* Fluid Design System - Balanced Mobile First */
   --container-padding: 12px;
-  --border-radius-lg: clamp(1rem, 2vw, 1.5rem);
-  --font-size-base: clamp(0.9rem, 1vw + 0.5rem, 1.1rem);
-  --h1-size: clamp(2rem, 8vw, 3.5rem);
-  --h2-size: clamp(1.5rem, 6vw, 2.5rem);
+  --border-radius-lg: clamp(0.75rem, 1.5vw, 1.25rem);
+  --font-size-base: clamp(0.85rem, 0.8vw + 0.4rem, 1rem);
+  --h1-size: clamp(1.75rem, 7vw, 2.5rem);
+  --h2-size: clamp(1.25rem, 5vw, 2rem);
 }
 
 body {
@@ -91,7 +91,7 @@ ion-content {
   border-radius: var(--border-radius-lg);
   border: 1px solid var(--card-border);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  padding: 1.5rem 0.75rem;
+  padding: 1.25rem 0.6rem;
   width: 100%;
 }
 

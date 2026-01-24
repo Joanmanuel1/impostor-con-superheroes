@@ -42,7 +42,6 @@ import { ref, computed, onMounted, onUnmounted, watch } from 'vue';
 import { IonIcon } from '@ionic/vue';
 import { arrowForwardOutline, timeOutline } from 'ionicons/icons';
 import { store } from '../store';
-import { soundManager } from '../utils/SoundManager';
 
 const timeLeft = ref(store.config.debateTime || 180);
 const totalTime = store.config.debateTime || 180;
@@ -64,7 +63,6 @@ const isUrgent = computed(() => timeLeft.value <= 30);
 // Watch for urgency to trigger effects
 watch(isUrgent, (newVal) => {
     if (newVal) {
-        soundManager.play('click'); // Subtle warning sound if available? Reusing click for now or we could add 'tick'
         // Alternatively, we play a ticking sound every second in the urgent phase
     }
 });
@@ -75,22 +73,16 @@ const tick = () => {
 
         // Play tick sound every second in last 10 seconds
         if (timeLeft.value <= 10 && timeLeft.value > 0) {
-            soundManager.play('click');
-            soundManager.vibrate('light');
         }
 
     } else {
         clearInterval(timerInterval);
-        soundManager.play('alarm');
-        soundManager.vibrate('medium');
         // Auto-proceed shortly after? Or wait for user?
         // Let's wait for user or maybe auto-proceed after 3s
     }
 };
 
 const skipDebate = () => {
-    soundManager.play('click');
-    soundManager.vibrate('light');
     store.gameState = 'voting';
 };
 

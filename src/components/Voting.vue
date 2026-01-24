@@ -2,7 +2,7 @@
   <div class="game-card voting-card container-fluid">
     <div class="row text-center mb-4">
       <div class="col-12">
-        <h1 class="gradient-text mb-1">Votación</h1>
+        <h1 class="gradient-text h3 mb-1">Votación</h1>
         <p class="text-secondary small fw-bold text-uppercase letter-spacing-sm">Ronda {{ store.currentRound }}</p>
 
         <div v-if="store.eliminatedPlayers.length > 0" class="eliminated-pill mt-2">
@@ -123,8 +123,8 @@ const activePlayers = computed(() => store.players.filter(p => !store.eliminated
 .voter-card-premium {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 1.5rem;
-  padding: 1.25rem;
+  border-radius: 1.2rem;
+  padding: 1rem;
   transition: all 0.4s ease;
 }
 
@@ -135,8 +135,8 @@ const activePlayers = computed(() => store.players.filter(p => !store.eliminated
 }
 
 .voter-avatar {
-  width: 44px;
-  height: 44px;
+  width: 38px;
+  height: 38px;
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -154,7 +154,7 @@ const activePlayers = computed(() => store.players.filter(p => !store.eliminated
 .voter-initial {
   font-weight: 800;
   color: white;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 .status-badge {
@@ -184,15 +184,15 @@ const activePlayers = computed(() => store.players.filter(p => !store.eliminated
 /* Voting Grid */
 .voting-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(85px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
   gap: 0.75rem;
 }
 
 .vote-target-card {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 1rem;
-  padding: 0.75rem 0.5rem;
+  border-radius: 0.8rem;
+  padding: 0.6rem 0.4rem;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   color: var(--text-light);
   width: 100%;
@@ -211,8 +211,8 @@ const activePlayers = computed(() => store.players.filter(p => !store.eliminated
 }
 
 .vote-target-avatar {
-  width: 40px;
-  height: 40px;
+  width: 34px;
+  height: 34px;
   border-radius: 12px;
   display: flex;
   align-items: center;

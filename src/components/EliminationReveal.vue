@@ -7,7 +7,7 @@
                         :icon="store.lastEliminatedPlayer?.role === 'villain' ? skullOutline : shieldCheckmarkOutline"></ion-icon>
                 </div>
 
-                <h3 class="text-uppercase fw-bold mb-2 letter-spacing-lg">JUGADOR ELIMINADO</h3>
+                <h3 class="small text-uppercase fw-bold mb-2 letter-spacing-lg">JUGADOR ELIMINADO</h3>
 
                 <div class="eliminated-player-card mx-auto mb-4">
                     <div class="player-avatar-large mb-3"
@@ -18,7 +18,7 @@
                             store.lastEliminatedPlayer?.name.charAt(0).toUpperCase() }}</span>
                     </div>
 
-                    <h1 class="display-4 fw-900 mb-3">{{ store.lastEliminatedPlayer?.name }}</h1>
+                    <h1 class="h3 fw-900 mb-3">{{ store.lastEliminatedPlayer?.name }}</h1>
 
                     <div class="role-reveal-badge mb-3" :class="store.lastEliminatedPlayer?.role">
                         <ion-icon :icon="store.lastEliminatedPlayer?.role === 'villain' ? flameOutline : shieldOutline"
@@ -85,13 +85,13 @@ const remainingVillains = computed(() => activePlayers.value.filter(p => p.role 
 }
 
 .elimination-icon-wrapper {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 4rem;
+    font-size: 3rem;
     background: rgba(255, 255, 255, 0.05);
 }
 
@@ -111,13 +111,13 @@ const remainingVillains = computed(() => activePlayers.value.filter(p => p.role 
     max-width: 400px;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 2rem;
-    padding: 2rem;
+    border-radius: 1.5rem;
+    padding: 1.5rem;
 }
 
 .player-avatar-large {
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -136,13 +136,13 @@ const remainingVillains = computed(() => activePlayers.value.filter(p => p.role 
 .avatar-initial-xl {
     color: white;
     font-weight: 900;
-    font-size: 3rem;
+    font-size: 2.5rem;
 }
 
 .role-reveal-badge {
     display: inline-flex;
     align-items: center;
-    padding: 12px 24px;
+    padding: 10px 20px;
     border-radius: 100px;
     font-weight: 900;
     font-size: 1rem;

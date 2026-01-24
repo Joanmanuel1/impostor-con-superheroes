@@ -3,9 +3,9 @@
     <div class="row text-center mb-2">
       <div class="col-12">
         <div class="d-flex align-items-center justify-content-center gap-3">
-          <h1 class="gradient-text display-4 mb-2 fw-900">El villano</h1>
+          <h1 class="gradient-text h3 mb-2 fw-900">El villano</h1>
         </div>
-        <button class="btn btn-sm btn-primary" @click="showTutorial = true">
+        <button class="btn btn-sm btn-primary" @click="showTutorial = true" style="border-radius: 25px;">
           <span>Tutorial</span>
         </button>
       </div>
@@ -225,7 +225,6 @@ import {
   helpCircleOutline
 } from 'ionicons/icons';
 import { store } from '../store';
-import { soundManager } from '../utils/SoundManager';
 import Tutorial from './Tutorial.vue';
 
 const playerNames = ref(['', '', '']);
@@ -318,9 +317,6 @@ const saveCustomCategory = () => {
     // Reset and close
     openCreateModal(); // Reset state
     showAddModal.value = false;
-
-    soundManager.play('click');
-    soundManager.vibrate('success');
   }
 };
 
@@ -381,14 +377,11 @@ const isValid = computed(() => {
 
 const addPlayer = () => {
   if (playerNames.value.length < 15) {
-    soundManager.play('click');
-    soundManager.vibrate('light');
     playerNames.value.push('');
   }
 };
 
 const removePlayer = (index) => {
-  soundManager.vibrate('medium');
   playerNames.value.splice(index, 1);
 };
 
@@ -405,16 +398,12 @@ const toggleCategory = (cat) => {
 
 const incrementVillains = () => {
   if (villainCount.value < playerNames.value.length - 1) {
-    soundManager.play('click');
-    soundManager.vibrate('light');
     villainCount.value++;
   }
 };
 
 const decrementVillains = () => {
   if (villainCount.value > 1) {
-    soundManager.play('click');
-    soundManager.vibrate('light');
     villainCount.value--;
   }
 };
@@ -472,7 +461,7 @@ const start = () => {
 }
 
 .section-title {
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   font-weight: 900;
   text-transform: uppercase;
   color: var(--text-light);
@@ -493,12 +482,14 @@ const start = () => {
 .option-card-premium {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 1.2rem;
-  padding: 1.25rem 0.75rem;
+  border-radius: 0.85rem;
+  padding: 0.5rem 0.2rem;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   display: flex;
   align-items: center;
+  justify-content: center;
+
 }
 
 .option-card-premium.active {
@@ -522,13 +513,13 @@ const start = () => {
 }
 
 .option-label {
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   font-weight: 800;
   text-transform: uppercase;
 }
 
 .option-status {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 900;
   color: var(--text-light);
 }
@@ -541,8 +532,8 @@ const start = () => {
 .villain-control-card {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 1.5rem;
-  padding: 1.5rem;
+  border-radius: 1.2rem;
+  padding: 1.2rem;
 }
 
 .villain-icon-bg {
@@ -590,9 +581,10 @@ const start = () => {
 .category-chip {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 14px;
+  border-radius: 10px;
   font-weight: 700;
-  padding: 0.6rem 1.2rem;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.8rem;
   transition: all 0.3s ease;
   color: var(--text-light);
 }
@@ -617,8 +609,8 @@ const start = () => {
   align-items: center;
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 0.5rem 1rem;
-  border-radius: 1.2rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 0.85rem;
   transition: border-color 0.3s;
   gap: 0.75rem;
   width: 100%;
@@ -630,8 +622,8 @@ const start = () => {
 }
 
 .player-avatar-preview {
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -650,7 +642,7 @@ const start = () => {
 .avatar-initial {
   color: white;
   font-weight: 900;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
 }
 
 .player-number {
@@ -672,7 +664,8 @@ const start = () => {
   border: none !important;
   color: white !important;
   font-weight: 700 !important;
-  padding: 0.75rem 0 !important;
+  font-size: 0.9rem !important;
+  padding: 0.6rem 0 !important;
   box-shadow: none !important;
 }
 
@@ -690,7 +683,9 @@ const start = () => {
 .btn-add-player {
   font-weight: 800;
   transition: all 0.3s;
-  border-radius: 25px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  padding: 0.5rem !important;
 }
 
 .btn-add-player:active {
@@ -718,9 +713,9 @@ const start = () => {
   background: linear-gradient(135deg, var(--primary), var(--secondary));
   color: var(--bg-dark);
   border: none;
-  font-size: 1.2rem;
+  font-size: 1rem;
   letter-spacing: 0.05em;
-  border-radius: 1.4rem;
+  border-radius: 1rem;
   box-shadow: 0 15px 40px -10px var(--primary-glow);
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }

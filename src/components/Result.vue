@@ -2,7 +2,7 @@
   <div class="game-card result-card container-fluid text-center">
     <div class="row">
       <div class="col-12">
-        <h5 class="display-6 fw-900 victory-message" :class="store.winner">
+        <h5 class="h4 fw-900 victory-message" :class="store.winner">
           {{ store.winner === 'superheroes' ? '¡HÉROES VENCEN!' : '¡VILLANOS GANAN!' }}
         </h5>
         <p class="lead opacity-75">
@@ -146,8 +146,8 @@ const getEliminationRound = (playerId) => {
 .result-stat-card {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 1rem;
-  border-radius: 1.5rem;
+  padding: 0.75rem;
+  border-radius: 1.2rem;
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
@@ -168,8 +168,8 @@ const getEliminationRound = (playerId) => {
 .revelation-box {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, transparent 100%);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 2rem;
-  padding: 2rem 1.5rem;
+  border-radius: 1.5rem;
+  padding: 1.5rem 1rem;
   position: relative;
 }
 
@@ -201,9 +201,9 @@ const getEliminationRound = (playerId) => {
 }
 
 .villain-avatar-reveal {
-  width: 50px;
-  height: 50px;
-  border-radius: 15px;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -224,12 +224,12 @@ const getEliminationRound = (playerId) => {
 .villain-avatar-initial {
   color: white;
   font-weight: 900;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
 }
 
 .villains-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
   gap: 1rem;
   margin-top: 1rem;
 }
@@ -257,7 +257,8 @@ const getEliminationRound = (playerId) => {
   background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
   border: none;
   color: white;
-  border-radius: 1.5rem;
+  font-size: 0.9rem;
+  border-radius: 1.25rem;
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 

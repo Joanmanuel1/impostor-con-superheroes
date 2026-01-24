@@ -44,7 +44,6 @@ export const store = reactive({
   categories: {
     // Default categories will be merged with custom ones dynamically
 
-
     Comidas: [
       { word: 'Pizza', hint: 'Horno' },
       { word: 'Sushi', hint: 'Frío' },

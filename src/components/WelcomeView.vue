@@ -14,11 +14,8 @@
 
 <script setup>
 import { store } from '../store';
-import { soundManager } from '../utils/SoundManager';
 
 const startSetup = () => {
-    soundManager.play('click');
-    soundManager.vibrate('light');
     store.gameState = 'setup';
 };
 </script>
@@ -59,13 +56,13 @@ const startSetup = () => {
 }
 
 .tap-hint {
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     font-weight: 900;
     color: var(--text-light);
     text-shadow: 0 0 20px var(--primary-glow), 0 0 40px rgba(0, 0, 0, 0.5);
     letter-spacing: 0.25em;
     background: rgba(15, 23, 42, 0.6);
-    padding: 1rem 2.5rem;
+    padding: 0.75rem 1.75rem;
     border-radius: 100px;
     backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.1);
