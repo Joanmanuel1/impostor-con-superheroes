@@ -2,18 +2,16 @@
   <ion-app>
     <ion-content>
       <div class="app-wrapper">
-        <WelcomeView v-if="store.gameState === 'welcome'" />
-        <Setup v-else-if="store.gameState === 'setup'" />
-        <PlayerView v-else-if="store.gameState === 'show-word'" />
-        <Voting v-else-if="store.gameState === 'voting'" />
-        <EliminationReveal v-else-if="store.gameState === 'elimination-reveal'" />
-        <Result v-else-if="store.gameState === 'results'" />
+        <Transition name="fade" mode="out-in">
+          <component :is="currentComponent" />
+        </Transition>
       </div>
     </ion-content>
   </ion-app>
 </template>
 
 <script setup>
+import { computed } from 'vue';
 import { IonApp, IonContent } from '@ionic/vue';
 import { store } from './store';
 import WelcomeView from './components/WelcomeView.vue';
@@ -22,6 +20,18 @@ import PlayerView from './components/PlayerView.vue';
 import Voting from './components/Voting.vue';
 import EliminationReveal from './components/EliminationReveal.vue';
 import Result from './components/Result.vue';
+
+const currentComponent = computed(() => {
+  switch (store.gameState) {
+    case 'welcome': return WelcomeView;
+    case 'setup': return Setup;
+    case 'show-word': return PlayerView;
+    case 'voting': return Voting;
+    case 'elimination-reveal': return EliminationReveal;
+    case 'results': return Result;
+    default: return WelcomeView;
+  }
+});
 </script>
 
 <style>
