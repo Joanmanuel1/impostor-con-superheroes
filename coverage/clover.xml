@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1773236224792" clover="3.2.0">
+  <project timestamp="1773236224792" name="All files">
+    <metrics statements="449" coveredstatements="441" conditionals="332" coveredconditionals="307" methods="117" coveredmethods="110" elements="898" coveredelements="858" complexity="0" loc="449" ncloc="449" packages="4" files="13" classes="13"/>
+    <package name="src">
+      <metrics statements="14" coveredstatements="14" conditionals="7" coveredconditionals="7" methods="4" coveredmethods="4"/>
+      <file name="App.vue" path="/home/jmromero/Documentos/proyectos/Impostor/frontend/src/App.vue">
+        <metrics statements="14" coveredstatements="14" conditionals="7" coveredconditionals="7" methods="4" coveredmethods="4"/>
+        <line num="2" count="7" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="42" type="stmt"/>
+        <line num="8" count="7" type="stmt"/>
+        <line num="9" count="7" type="stmt"/>
+        <line num="24" count="7" type="stmt"/>
+        <line num="25" count="48" type="cond" truecount="7" falsecount="0"/>
+        <line num="26" count="21" type="stmt"/>
+        <line num="27" count="2" type="stmt"/>
+        <line num="28" count="3" type="stmt"/>
+        <line num="29" count="4" type="stmt"/>
+        <line num="30" count="5" type="stmt"/>
+        <line num="31" count="6" type="stmt"/>
+        <line num="32" count="7" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components">
+      <metrics statements="181" coveredstatements="174" conditionals="180" coveredconditionals="169" methods="55" coveredmethods="48"/>
+      <file name="DebateView.vue" path="/home/jmromero/Documentos/proyectos/Impostor/frontend/src/components/DebateView.vue">
+        <metrics statements="30" coveredstatements="30" conditionals="22" coveredconditionals="20" methods="8" coveredmethods="8"/>
+        <line num="2" count="15" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="46" count="10" type="cond" truecount="2" falsecount="0"/>
+        <line num="47" count="10" type="cond" truecount="2" falsecount="0"/>
+        <line num="48" count="10" type="stmt"/>
+        <line num="49" count="10" type="stmt"/>
+        <line num="51" count="10" type="stmt"/>
+        <line num="52" count="15" type="stmt"/>
+        <line num="53" count="15" type="stmt"/>
+        <line num="54" count="15" type="cond" truecount="2" falsecount="0"/>
+        <line num="57" count="10" type="stmt"/>
+        <line num="58" count="15" type="stmt"/>
+        <line num="61" count="15" type="stmt"/>
+        <line num="64" count="10" type="stmt"/>
+        <line num="65" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="70" count="10" type="stmt"/>
+        <line num="71" count="66" type="cond" truecount="2" falsecount="0"/>
+        <line num="72" count="65" type="stmt"/>
+        <line num="75" count="65" type="cond" truecount="4" falsecount="0"/>
+        <line num="79" count="1" type="stmt"/>
+        <line num="85" count="10" type="stmt"/>
+        <line num="86" count="1" type="stmt"/>
+        <line num="89" count="10" type="stmt"/>
+        <line num="90" count="10" type="stmt"/>
+        <line num="93" count="10" type="stmt"/>
+        <line num="94" count="1" type="cond" truecount="1" falsecount="1"/>
+      </file>
+      <file name="EliminationReveal.vue" path="/home/jmromero/Documentos/proyectos/Impostor/frontend/src/components/EliminationReveal.vue">
+        <metrics statements="17" coveredstatements="17" conditionals="27" coveredconditionals="26" methods="5" coveredmethods="5"/>
+        <line num="2" count="72" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="21" count="2" type="stmt"/>
+        <line num="36" count="2" type="stmt"/>
+        <line num="37" count="2" type="stmt"/>
+        <line num="38" count="2" type="stmt"/>
+        <line num="40" count="2" type="stmt"/>
+        <line num="43" count="2" type="stmt"/>
+        <line num="44" count="2" type="stmt"/>
+        <line num="46" count="2" type="stmt"/>
+        <line num="53" count="2" type="stmt"/>
+        <line num="54" count="2" type="stmt"/>
+        <line num="55" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="77" count="250" type="stmt"/>
+        <line num="78" count="210" type="stmt"/>
+      </file>
+      <file name="PlayerView.vue" path="/home/jmromero/Documentos/proyectos/Impostor/frontend/src/components/PlayerView.vue">
+        <metrics statements="26" coveredstatements="26" conditionals="46" coveredconditionals="45" methods="6" coveredmethods="6"/>
+        <line num="2" count="132" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+        <line num="23" count="2" type="stmt"/>
+        <line num="27" count="2" type="stmt"/>
+        <line num="28" count="2" type="stmt"/>
+        <line num="41" count="2" type="stmt"/>
+        <line num="47" count="2" type="stmt"/>
+        <line num="59" count="120" type="stmt"/>
+        <line num="63" count="2" type="stmt"/>
+        <line num="80" count="2" type="stmt"/>
+        <line num="81" count="7" type="cond" truecount="4" falsecount="0"/>
+        <line num="112" count="13" type="stmt"/>
+        <line num="113" count="104" type="stmt"/>
+        <line num="115" count="13" type="stmt"/>
+        <line num="116" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="117" count="1" type="stmt"/>
+        <line num="119" count="2" type="stmt"/>
+        <line num="123" count="13" type="stmt"/>
+        <line num="124" count="8" type="stmt"/>
+        <line num="127" count="13" type="stmt"/>
+        <line num="128" count="2" type="stmt"/>
+        <line num="129" count="2" type="stmt"/>
+      </file>
+      <file name="Result.vue" path="/home/jmromero/Documentos/proyectos/Impostor/frontend/src/components/Result.vue">
+        <metrics statements="30" coveredstatements="30" conditionals="27" coveredconditionals="23" methods="8" coveredmethods="8"/>
+        <line num="2" count="161" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+        <line num="24" count="2" type="stmt"/>
+        <line num="29" count="2" type="stmt"/>
+        <line num="30" count="2" type="stmt"/>
+        <line num="33" count="2" type="stmt"/>
+        <line num="34" count="2" type="stmt"/>
+        <line num="37" count="2" type="stmt"/>
+        <line num="38" count="149" type="stmt"/>
+        <line num="43" count="2" type="stmt"/>
+        <line num="51" count="2" type="stmt"/>
+        <line num="52" count="2" type="stmt"/>
+        <line num="55" count="2" type="stmt"/>
+        <line num="56" count="298" type="stmt"/>
+        <line num="62" count="2" type="stmt"/>
+        <line num="71" count="2" type="stmt"/>
+        <line num="72" count="2" type="stmt"/>
+        <line num="73" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="93" count="315" type="stmt"/>
+        <line num="94" count="315" type="stmt"/>
+        <line num="96" count="14" type="stmt"/>
+        <line num="97" count="16" type="stmt"/>
+        <line num="98" count="16" type="cond" truecount="1" falsecount="1"/>
+      </file>
+      <file name="Setup.vue" path="/home/jmromero/Documentos/proyectos/Impostor/frontend/src/components/Setup.vue">
+        <metrics statements="43" coveredstatements="36" conditionals="35" coveredconditionals="34" methods="17" coveredmethods="10"/>
+        <line num="2" count="31" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="9" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="17" count="0" type="cond" truecount="2" falsecount="0"/>
+        <line num="18" count="0" type="cond" truecount="2" falsecount="0"/>
+        <line num="19" count="0" type="cond" truecount="2" falsecount="0"/>
+        <line num="25" count="0" type="cond" truecount="2" falsecount="0"/>
+        <line num="26" count="0" type="cond" truecount="2" falsecount="0"/>
+        <line num="31" count="0" type="cond" truecount="2" falsecount="0"/>
+        <line num="35" count="2" type="stmt"/>
+        <line num="37" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="44" count="0" type="cond" truecount="3" falsecount="0"/>
+        <line num="58" count="20" type="stmt"/>
+        <line num="59" count="20" type="stmt"/>
+        <line num="60" count="20" type="stmt"/>
+        <line num="61" count="20" type="stmt"/>
+        <line num="62" count="20" type="stmt"/>
+        <line num="64" count="20" type="stmt"/>
+        <line num="65" count="20" type="stmt"/>
+        <line num="68" count="20" type="stmt"/>
+        <line num="69" count="20" type="stmt"/>
+        <line num="70" count="20" type="cond" truecount="2" falsecount="0"/>
+        <line num="71" count="3" type="stmt"/>
+        <line num="72" count="3" type="stmt"/>
+        <line num="73" count="3" type="cond" truecount="4" falsecount="0"/>
+        <line num="74" count="1" type="stmt"/>
+        <line num="77" count="1" type="stmt"/>
+        <line num="82" count="20" type="cond" truecount="2" falsecount="0"/>
+        <line num="83" count="18" type="stmt"/>
+        <line num="84" count="1" type="stmt"/>
+        <line num="90" count="20" type="stmt"/>
+        <line num="91" count="7" type="stmt"/>
+        <line num="95" count="27" type="stmt"/>
+        <line num="96" count="2" type="stmt"/>
+        <line num="97" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="98" count="1" type="stmt"/>
+        <line num="102" count="20" type="stmt"/>
+        <line num="103" count="41" type="cond" truecount="2" falsecount="0"/>
+        <line num="106" count="20" type="stmt"/>
+        <line num="107" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="108" count="3" type="stmt"/>
+      </file>
+      <file name="Tutorial.vue" path="/home/jmromero/Documentos/proyectos/Impostor/frontend/src/components/Tutorial.vue">
+        <metrics statements="16" coveredstatements="16" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
+        <line num="2" count="19" type="stmt"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="13" count="3" type="stmt"/>
+        <line num="14" count="3" type="stmt"/>
+        <line num="18" count="3" type="stmt"/>
+        <line num="19" count="76" type="stmt"/>
+        <line num="51" count="8" type="stmt"/>
+        <line num="53" count="8" type="stmt"/>
+        <line num="55" count="8" type="stmt"/>
+        <line num="82" count="8" type="stmt"/>
+        <line num="83" count="11" type="stmt"/>
+        <line num="86" count="8" type="stmt"/>
+        <line num="87" count="2" type="stmt"/>
+        <line num="88" count="2" type="stmt"/>
+      </file>
+      <file name="Voting.vue" path="/home/jmromero/Documentos/proyectos/Impostor/frontend/src/components/Voting.vue">
+        <metrics statements="16" coveredstatements="16" conditionals="21" coveredconditionals="19" methods="7" coveredmethods="7"/>
+        <line num="2" count="71" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="16" count="268" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="23" count="2" type="stmt"/>
+        <line num="24" count="2" type="stmt"/>
+        <line num="37" count="2" type="stmt"/>
+        <line num="38" count="1002" type="stmt"/>
+        <line num="40" count="1" type="stmt"/>
+        <line num="41" count="2" type="stmt"/>
+        <line num="47" count="2" type="stmt"/>
+        <line num="50" count="268" type="stmt"/>
+        <line num="68" count="212" type="stmt"/>
+      </file>
+      <file name="WelcomeView.vue" path="/home/jmromero/Documentos/proyectos/Impostor/frontend/src/components/WelcomeView.vue">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="2" count="3" type="stmt"/>
+        <line num="18" count="3" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.setup">
+      <metrics statements="154" coveredstatements="153" conditionals="98" coveredconditionals="85" methods="36" coveredmethods="36"/>
+      <file name="CategorySelection.vue" path="/home/jmromero/Documentos/proyectos/Impostor/frontend/src/components/setup/CategorySelection.vue">
+        <metrics statements="105" coveredstatements="104" conditionals="64" coveredconditionals="58" methods="25" coveredmethods="25"/>
+        <line num="2" count="3" type="stmt"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="7" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="9" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="15" count="3" type="stmt"/>
+        <line num="17" count="2923" type="stmt"/>
+        <line num="22" count="8" type="stmt"/>
+        <line num="39" count="3" type="stmt"/>
+        <line num="40" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="42" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="45" count="3" type="stmt"/>
+        <line num="46" count="1758" type="stmt"/>
+        <line num="47" count="2" type="stmt"/>
+        <line num="49" count="2" type="stmt"/>
+        <line num="50" count="2" type="stmt"/>
+        <line num="59" count="3" type="stmt"/>
+        <line num="60" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="62" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="73" count="3" type="stmt"/>
+        <line num="74" count="3" type="stmt"/>
+        <line num="78" count="3" type="stmt"/>
+        <line num="81" count="3" type="stmt"/>
+        <line num="82" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="105" count="24" type="stmt"/>
+        <line num="110" count="24" type="stmt"/>
+        <line num="113" count="24" type="stmt"/>
+        <line num="114" count="24" type="stmt"/>
+        <line num="115" count="24" type="stmt"/>
+        <line num="116" count="24" type="stmt"/>
+        <line num="118" count="24" type="stmt"/>
+        <line num="119" count="18" type="cond" truecount="2" falsecount="0"/>
+        <line num="120" count="74" type="cond" truecount="2" falsecount="0"/>
+        <line num="123" count="24" type="stmt"/>
+        <line num="124" count="24" type="stmt"/>
+        <line num="126" count="24" type="stmt"/>
+        <line num="127" count="2" type="stmt"/>
+        <line num="130" count="24" type="stmt"/>
+        <line num="131" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="132" count="1" type="stmt"/>
+        <line num="136" count="24" type="stmt"/>
+        <line num="137" count="8" type="cond" truecount="2" falsecount="0"/>
+        <line num="138" count="5" type="stmt"/>
+        <line num="140" count="3" type="stmt"/>
+        <line num="144" count="24" type="stmt"/>
+        <line num="145" count="3" type="stmt"/>
+        <line num="146" count="3" type="stmt"/>
+        <line num="147" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="148" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="149" count="1" type="stmt"/>
+        <line num="152" count="1" type="stmt"/>
+        <line num="154" count="3" type="stmt"/>
+        <line num="157" count="24" type="stmt"/>
+        <line num="158" count="9" type="stmt"/>
+        <line num="159" count="9" type="stmt"/>
+        <line num="160" count="9" type="stmt"/>
+        <line num="161" count="9" type="stmt"/>
+        <line num="164" count="24" type="stmt"/>
+        <line num="165" count="5" type="stmt"/>
+        <line num="166" count="5" type="stmt"/>
+        <line num="169" count="5" type="stmt"/>
+        <line num="170" count="5" type="stmt"/>
+        <line num="172" count="5" type="cond" truecount="1" falsecount="1"/>
+        <line num="173" count="62" type="stmt"/>
+        <line num="175" count="0" type="stmt"/>
+        <line num="177" count="5" type="stmt"/>
+        <line num="180" count="24" type="stmt"/>
+        <line num="181" count="2" type="stmt"/>
+        <line num="182" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="183" count="4" type="stmt"/>
+        <line num="185" count="2" type="cond" truecount="3" falsecount="1"/>
+        <line num="186" count="2" type="stmt"/>
+        <line num="189" count="2" type="cond" truecount="4" falsecount="0"/>
+        <line num="190" count="1" type="stmt"/>
+        <line num="192" count="1" type="stmt"/>
+        <line num="193" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="194" count="1" type="stmt"/>
+        <line num="195" count="1" type="stmt"/>
+        <line num="196" count="1" type="stmt"/>
+        <line num="200" count="2" type="stmt"/>
+        <line num="203" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="204" count="2" type="stmt"/>
+        <line num="205" count="2" type="stmt"/>
+        <line num="206" count="2" type="stmt"/>
+        <line num="210" count="2" type="stmt"/>
+        <line num="211" count="2" type="stmt"/>
+        <line num="215" count="24" type="stmt"/>
+        <line num="216" count="2" type="stmt"/>
+        <line num="217" count="2" type="stmt"/>
+        <line num="220" count="24" type="stmt"/>
+        <line num="221" count="2" type="stmt"/>
+        <line num="222" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="224" count="1" type="stmt"/>
+        <line num="227" count="1" type="stmt"/>
+        <line num="228" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="229" count="1" type="stmt"/>
+        <line num="230" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="231" count="1" type="stmt"/>
+        <line num="232" count="1" type="stmt"/>
+        <line num="233" count="1" type="stmt"/>
+        <line num="238" count="1" type="stmt"/>
+        <line num="239" count="1" type="stmt"/>
+        <line num="240" count="1" type="stmt"/>
+      </file>
+      <file name="GameConfig.vue" path="/home/jmromero/Documentos/proyectos/Impostor/frontend/src/components/setup/GameConfig.vue">
+        <metrics statements="26" coveredstatements="26" conditionals="18" coveredconditionals="16" methods="4" coveredmethods="4"/>
+        <line num="2" count="12" type="stmt"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="7" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="10" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="15" count="3" type="stmt"/>
+        <line num="17" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="18" count="3" type="stmt"/>
+        <line num="20" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="25" count="3" type="stmt"/>
+        <line num="26" count="3" type="stmt"/>
+        <line num="27" count="3" type="stmt"/>
+        <line num="28" count="3" type="stmt"/>
+        <line num="29" count="3" type="stmt"/>
+        <line num="37" count="3" type="stmt"/>
+        <line num="40" count="3" type="stmt"/>
+        <line num="64" count="12" type="stmt"/>
+        <line num="71" count="12" type="stmt"/>
+        <line num="73" count="12" type="stmt"/>
+        <line num="74" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="75" count="1" type="stmt"/>
+        <line num="79" count="12" type="stmt"/>
+        <line num="80" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="81" count="1" type="stmt"/>
+      </file>
+      <file name="PlayerInput.vue" path="/home/jmromero/Documentos/proyectos/Impostor/frontend/src/components/setup/PlayerInput.vue">
+        <metrics statements="23" coveredstatements="23" conditionals="16" coveredconditionals="11" methods="7" coveredmethods="7"/>
+        <line num="2" count="13" type="stmt"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="10" count="3" type="stmt"/>
+        <line num="12" count="63" type="stmt"/>
+        <line num="19" count="3" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="22" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="43" count="13" type="stmt"/>
+        <line num="50" count="13" type="stmt"/>
+        <line num="52" count="13" type="stmt"/>
+        <line num="53" count="1" type="stmt"/>
+        <line num="54" count="1" type="stmt"/>
+        <line num="55" count="1" type="stmt"/>
+        <line num="58" count="13" type="stmt"/>
+        <line num="59" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="60" count="1" type="stmt"/>
+        <line num="61" count="1" type="stmt"/>
+        <line num="65" count="13" type="stmt"/>
+        <line num="66" count="1" type="stmt"/>
+        <line num="67" count="1" type="stmt"/>
+        <line num="68" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.store">
+      <metrics statements="100" coveredstatements="100" conditionals="47" coveredconditionals="46" methods="22" coveredmethods="22"/>
+      <file name="index.js" path="/home/jmromero/Documentos/proyectos/Impostor/frontend/src/store/index.js">
+        <metrics statements="100" coveredstatements="100" conditionals="47" coveredconditionals="46" methods="22" coveredmethods="22"/>
+        <line num="3" count="11" type="stmt"/>
+        <line num="526" count="90" type="stmt"/>
+        <line num="527" count="90" type="stmt"/>
+        <line num="528" count="90" type="cond" truecount="2" falsecount="0"/>
+        <line num="529" count="90" type="cond" truecount="2" falsecount="0"/>
+        <line num="531" count="90" type="stmt"/>
+        <line num="534" count="90" type="cond" truecount="2" falsecount="0"/>
+        <line num="536" count="506" type="cond" truecount="2" falsecount="0"/>
+        <line num="539" count="90" type="cond" truecount="2" falsecount="0"/>
+        <line num="540" count="4" type="stmt"/>
+        <line num="542" count="4" type="stmt"/>
+        <line num="544" count="86" type="stmt"/>
+        <line num="547" count="90" type="stmt"/>
+        <line num="549" count="90" type="cond" truecount="4" falsecount="0"/>
+        <line num="550" count="2" type="stmt"/>
+        <line num="551" count="2" type="stmt"/>
+        <line num="554" count="88" type="stmt"/>
+        <line num="555" count="88" type="stmt"/>
+        <line num="558" count="88" type="stmt"/>
+        <line num="559" count="89" type="stmt"/>
+        <line num="562" count="90" type="stmt"/>
+        <line num="564" count="321" type="stmt"/>
+        <line num="574" count="321" type="stmt"/>
+        <line num="575" count="90" type="stmt"/>
+        <line num="576" count="91" type="stmt"/>
+        <line num="577" count="91" type="stmt"/>
+        <line num="578" count="91" type="stmt"/>
+        <line num="579" count="91" type="stmt"/>
+        <line num="582" count="88" type="stmt"/>
+        <line num="583" count="88" type="stmt"/>
+        <line num="584" count="88" type="stmt"/>
+        <line num="585" count="88" type="stmt"/>
+        <line num="589" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="590" count="3" type="stmt"/>
+        <line num="592" count="1" type="stmt"/>
+        <line num="597" count="11" type="cond" truecount="2" falsecount="0"/>
+        <line num="598" count="9" type="stmt"/>
+        <line num="600" count="11" type="stmt"/>
+        <line num="602" count="17" type="stmt"/>
+        <line num="603" count="11" type="cond" truecount="2" falsecount="0"/>
+        <line num="606" count="34" type="stmt"/>
+        <line num="607" count="24" type="cond" truecount="2" falsecount="0"/>
+        <line num="608" count="1" type="stmt"/>
+        <line num="614" count="11" type="stmt"/>
+        <line num="615" count="11" type="stmt"/>
+        <line num="616" count="11" type="stmt"/>
+        <line num="618" count="11" type="stmt"/>
+        <line num="619" count="13" type="stmt"/>
+        <line num="621" count="13" type="cond" truecount="2" falsecount="0"/>
+        <line num="623" count="12" type="cond" truecount="2" falsecount="0"/>
+        <line num="624" count="11" type="stmt"/>
+        <line num="625" count="11" type="stmt"/>
+        <line num="626" count="11" type="stmt"/>
+        <line num="627" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="628" count="1" type="stmt"/>
+        <line num="633" count="11" type="cond" truecount="4" falsecount="0"/>
+        <line num="634" count="3" type="stmt"/>
+        <line num="635" count="3" type="stmt"/>
+        <line num="636" count="3" type="stmt"/>
+        <line num="640" count="14" type="stmt"/>
+        <line num="641" count="8" type="stmt"/>
+        <line num="642" count="8" type="stmt"/>
+        <line num="645" count="32" type="stmt"/>
+        <line num="646" count="22" type="stmt"/>
+        <line num="647" count="22" type="stmt"/>
+        <line num="650" count="8" type="cond" truecount="2" falsecount="0"/>
+        <line num="651" count="1" type="stmt"/>
+        <line num="652" count="1" type="stmt"/>
+        <line num="653" count="1" type="stmt"/>
+        <line num="657" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="658" count="4" type="stmt"/>
+        <line num="659" count="4" type="stmt"/>
+        <line num="660" count="4" type="stmt"/>
+        <line num="675" count="3" type="stmt"/>
+        <line num="679" count="6" type="stmt"/>
+        <line num="680" count="6" type="stmt"/>
+        <line num="683" count="6" type="stmt"/>
+        <line num="684" count="21" type="cond" truecount="2" falsecount="0"/>
+        <line num="685" count="19" type="stmt"/>
+        <line num="689" count="6" type="stmt"/>
+        <line num="694" count="1" type="stmt"/>
+        <line num="698" count="2" type="stmt"/>
+        <line num="699" count="2" type="stmt"/>
+        <line num="700" count="2" type="stmt"/>
+        <line num="701" count="2" type="stmt"/>
+        <line num="702" count="2" type="stmt"/>
+        <line num="703" count="2" type="stmt"/>
+        <line num="704" count="2" type="stmt"/>
+        <line num="705" count="2" type="stmt"/>
+        <line num="709" count="14" type="stmt"/>
+        <line num="710" count="14" type="cond" truecount="2" falsecount="0"/>
+        <line num="711" count="2" type="stmt"/>
+        <line num="712" count="2" type="stmt"/>
+        <line num="714" count="1" type="stmt"/>
+        <line num="720" count="10" type="stmt"/>
+        <line num="721" count="10" type="stmt"/>
+        <line num="725" count="3" type="stmt"/>
+        <line num="726" count="3" type="stmt"/>
+        <line num="730" count="578" type="stmt"/>
+        <line num="735" count="11" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>

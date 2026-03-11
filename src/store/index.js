@@ -661,6 +661,10 @@ export const store = reactive({
     }
 
     // Win condition 3: Only 2 players left
+    // Note: This is technically unreachable because condition 2 (villains >= heroes)
+    // will always trigger first when 2 players remain with at least 1 villain.
+    // Kept for safety as a defensive check.
+    /* v8 ignore next 4 */
     if (activePlayers.length <= 2) {
       store.winner = 'villains';
       store.gameState = 'results';
